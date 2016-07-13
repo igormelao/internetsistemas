@@ -4,6 +4,10 @@ class Student < ActiveRecord::Base
 
   enum status: { inactive: 0, active: 1 }
 
+  # associations
+
+  has_many :classrooms, dependent: :destroy
+
   # validations
 
   validates :name, presence: true
