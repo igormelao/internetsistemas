@@ -3,8 +3,5 @@
   = f.text_field :name
   = f.label :description
   = f.text_area :description
-  = f.radio_button :status, :inactive, checked: true
-  = f.label :status, t('enumerations.status.inactive')
-  = f.radio_button :status, :active
-  = f.label :status, t('enumerations.status.active')
-  = f.submit 'Enviar'
+  = f.select :status, Status.to_a
+  = f.submit t('save')
