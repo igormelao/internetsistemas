@@ -1,0 +1,8 @@
+h1 Estudantes
+
+= link_to 'Adicionar', new_student_path
+
+- students.each do |student|
+  p
+    = link_to student.name, edit_student_path(student)
+

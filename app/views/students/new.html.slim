@@ -1,0 +1,12 @@
+h1 Novo Estudante
+
+= form_for student do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :register_number
+  = f.text_field :register_number
+  = f.radio_button :status, :inactive
+  = f.label :status, value: 'Inativo'
+  = f.radio_button :status, :active
+  = f.label :status, value: 'Ativo'
+  = f.submit 'Enviar'
