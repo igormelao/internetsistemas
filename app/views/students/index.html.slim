@@ -5,4 +5,5 @@ h1 Estudantes
 - students.each do |student|
   p
     = link_to student.name, edit_student_path(student)
-
+    br
+    = link_to 'remover', student_path(student), method: :delete

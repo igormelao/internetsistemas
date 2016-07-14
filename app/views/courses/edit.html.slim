@@ -1,0 +1,12 @@
+h1 Editar Curso
+
+= form_for course do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :description
+  = f.text_area :description
+  = f.radio_button :status, :inactive
+  = f.label :status, value: 'Inativo'
+  = f.radio_button :status, :active
+  = f.label :status, value: 'Ativo'
+  = f.submit 'Enviar'
