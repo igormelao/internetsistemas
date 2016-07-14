@@ -19,3 +19,5 @@ pt-BR:
               blank: Nome é obrigatório
             register_number:
               blank: Número de matrícula é obrigatório
+            status:
+              blank: Situação é obrigatória

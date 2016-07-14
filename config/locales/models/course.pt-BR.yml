@@ -19,3 +19,5 @@ pt-BR:
               blank: Nome é obrigatório
             description:
               blank: Descrição é obrigatória
+            status:
+              blank: Situação é obrigatória
