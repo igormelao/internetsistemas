@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   # validations
 
   validates :name, presence: true
-  validates :register_number, presence: true
+  validates :register_number, presence: true, uniqueness: true
   validates :status, presence: true
 
 end
