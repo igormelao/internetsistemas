@@ -2,9 +2,27 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
-    title Internetsistemas
+    title Sistema de Gestão de Cursos
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = yield
+    .container
+      nav.navbar.navbar-inverse.navbar-fixed-top.m-b-2
+        .navbar-header
+          button.navbar-toggle data-target="#system-navbar" data-toggle="collapse" type="button"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'Sistema de Gestão de Cursos', root_path, class: 'navbar-brand'
+
+        #system-navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              = link_to Student.model_name.human, students_path
+            li
+              = link_to Course.model_name.human, courses_path
+            li
+              = link_to Classroom.model_name.human, new_classroom_path
+
+      = yield

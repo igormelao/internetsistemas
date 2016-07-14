@@ -2,12 +2,14 @@ pt-BR:
   activerecord:
     models:
       classroom:
-        one: Sala de aula
-        other: Salas de aula
+        one: Matrícula de estudante
+        other: Matrículas de estudantes
 
     attributes:
       classroom:
+        course: Curso
         entry_at: Data de matrícula
+        student: Estudante
 
     errors:
       models:

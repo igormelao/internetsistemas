@@ -1,5 +1,10 @@
 = form_for classroom do |f|
-  = f.select :student_id, students_map
-  = f.select :course_id, courses_map
-  = f.hidden_field :entry_at, value: DateTime.now
-  = f.submit t('save')
+  fieldset.form-group
+    = f.label :student
+    = f.select :student_id, students_map, {}, { class: 'form-control' }
+  fieldset.form-group
+    = f.label :course
+    = f.select :course_id, courses_map, {}, { class: 'form-control' }
+  fieldset.form-group
+    = f.hidden_field :entry_at, value: DateTime.now
+    = f.submit t('save'), class: 'btn btn-primary pull-right'

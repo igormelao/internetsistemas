@@ -3,10 +3,27 @@
 h1
   = course.name
 
+.row
+  .col-xs-12
+    p
+      = Course.human_attribute_name(:description)
+.row
+  .col-xs-12
+    = course.description
+
+.row
+  .col-xs-2
+    = Course.human_attribute_name(:status)
+  .col-xs-2
+    = course.status_humanize
+
 - if students.present?
-  h2
+  h3
     = t('.students')
 
-  - students.each do |student|
-    p
-      = student.name
+  .row
+    - students.each do |student|
+      .col-xs-4
+        .card-block
+          h4.card-title = student.name
+          = link_to t('show'), student_path(student), class: 'btn btn-primary'

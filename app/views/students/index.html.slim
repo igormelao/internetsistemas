@@ -1,10 +1,26 @@
+= link_to t('add'), new_student_path, class: 'btn btn-primary pull-right'
+
 h1
   = t('.students')
 
-= link_to t('add'), new_student_path
-
-- students.each do |student|
-  p
-    = link_to student.name, edit_student_path(student)
-    br
-    = link_to t('remove'), student_path(student), method: :delete
+.row
+  .col-xs-12
+    .table-responsive
+      table.table
+        table.table
+          thead
+            tr
+              th
+                = Student.human_attribute_name(:name)
+              th
+                = t('actions')
+          tbody
+            - students.each do |student|
+                tr
+                  td
+                    = link_to student.name, student_path(student)
+                  td
+                    = link_to edit_student_path(student), class: "btn btn-success btn-xs" do
+                      span.glyphicon.glyphicon-pencil
+                    = link_to student_path(student), data: { confirm: t('remove_register_confirmation') }, method: :delete, class: "btn btn-danger btn-xs" do
+                      span.glyphicon.glyphicon-trash

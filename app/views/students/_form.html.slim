@@ -1,7 +1,12 @@
 = form_for student do |f|
-  = f.label :name
-  = f.text_field :name
-  = f.label :register_number
-  = f.text_field :register_number
-  = f.select :status, Status.to_a
-  = f.submit t('save')
+  fieldset.form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  fieldset.form-group
+    = f.label :register_number
+    = f.text_field :register_number, class: 'form-control'
+  fieldset.form-group
+    = f.label :status
+    = f.select :status, Status.to_a, {}, { class: 'form-control' }
+  fieldset.form-group
+    = f.submit t('save'), class: 'btn btn-primary pull-right'

@@ -1,8 +1,13 @@
 pt-BR:
+  actions: Ações
+  add: Adicionar
   enumerations:
     status:
       active: Ativo
       inactive: Inativo
+  remove_register_confirmation: Tem certeza de que deseja remover o registro?
   save: Salvar
-  remove: Remover
-  add: Adicionar
+  show: Visualizar
+
+
+

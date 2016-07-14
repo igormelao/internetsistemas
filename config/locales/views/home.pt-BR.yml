@@ -1,7 +1,8 @@
 pt-BR:
   home:
     index:
-      add_classroom: Matricular estudante
+      home: Sistema de Gestão de Cursos
+      add_classroom: Matrícula de estudante
       courses: Cursos
       students: Estudantes
 

@@ -1,11 +1,28 @@
+= link_to t('add'), new_course_path, class: 'btn btn-primary pull-right'
+
 h1
   = t('.courses')
 
-= link_to t('add'), new_course_path
-
-- courses.each do |course|
-  p
-    = link_to course.name, edit_course_path(course)
-    br
-    = link_to t('remove'), course_path(course), method: :delete
-
+.row
+  .col-xs-12
+    .table-responsive
+      table.table
+        table.table
+          thead
+            tr
+              th
+                = Course.human_attribute_name(:name)
+              th
+                = t('actions')
+          tbody
+            - courses.each do |course|
+                tr
+                  td
+                    = link_to course.name, course_path(course)
+                  td
+                    = link_to edit_course_path(course), class: "btn btn-success btn-xs" do
+                      span.glyphicon.glyphicon-pencil
+                    = link_to course_path(course),
+                      data: { confirm: t('remove_register_confirmation') },
+                      method: :delete, class: "btn btn-danger btn-xs" do
+                      span.glyphicon.glyphicon-trash
