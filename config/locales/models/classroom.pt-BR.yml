@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      classroom:
+        one: Sala de aula
+        other: Salas de aula
+
+    attributes:
+      classroom:
+        entry_at: Data de matrícula
+
+    errors:
+      models:
+        classroom:
+          attributes:
+            entry_at:
+              blank: Data de matrícula é obrigatória

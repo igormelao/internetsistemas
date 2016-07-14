@@ -1,0 +1,10 @@
+= form_for student do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :register_number
+  = f.text_field :register_number
+  = f.radio_button :status, :inactive, checked: true
+  = f.label :status, t('enumerations.status.inactive')
+  = f.radio_button :status, :active
+  = f.label :status, t('enumerations.status.active')
+  = f.submit t('save')

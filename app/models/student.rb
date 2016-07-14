@@ -2,7 +2,7 @@ class Student < ActiveRecord::Base
 
   # enums
 
-  enum status: { inactive: 0, active: 1 }
+  has_enumeration_for :status, create_helpers: true
 
   # associations
 

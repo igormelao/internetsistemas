@@ -1,10 +1,11 @@
-h1 Cursos
+h1
+  = t('.courses')
 
-= link_to 'Adicionar', new_course_path
+= link_to t('add'), new_course_path
 
 - courses.each do |course|
   p
     = link_to course.name, edit_course_path(course)
     br
-    = link_to 'remover', course_path(course), method: :delete
+    = link_to t('remove'), course_path(course), method: :delete
 

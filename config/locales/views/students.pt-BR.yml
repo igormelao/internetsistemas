@@ -1,0 +1,8 @@
+pt-BR:
+  students:
+    edit:
+      edit_student: Editar Estudante
+    index:
+      students: Estudantes
+    new:
+      new_student: Cadastrar Estudante

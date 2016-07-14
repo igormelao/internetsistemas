@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      student:
+        one: Estudante
+        other: Estudantes
+
+    attributes:
+      student:
+        name: Nome
+        register_number: Número de matrícula
+        status: Situação
+
+    errors:
+      models:
+        student:
+          attributes:
+            name:
+              blank: Nome é obrigatório
+            register_number:
+              blank: Número de matrícula é obrigatório

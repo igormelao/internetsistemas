@@ -1,2 +1,8 @@
 pt-BR:
-  hello: "Olá mundo"
+  enumerations:
+    status:
+      active: Ativo
+      inactive: Inativo
+  save: Salvar
+  remove: Remover
+  add: Adicionar

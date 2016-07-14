@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      course:
+        one: Curso
+        other: Cursos
+
+    attributes:
+      course:
+        name: Nome
+        description: Descrição
+        status: Situação
+
+    errors:
+      models:
+        course:
+          attributes:
+            name:
+              blank: Nome é obrigatório
+            description:
+              blank: Descrição é obrigatória
