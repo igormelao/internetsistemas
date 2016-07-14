@@ -15,3 +15,5 @@ pt-BR:
           attributes:
             entry_at:
               blank: Data de matrícula é obrigatória
+            student_id:
+              taken: Estudante já está matriculado no curso

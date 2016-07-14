@@ -1,6 +1,4 @@
-h1 Editar Sala de Aula
+h1
+  = t('.edit_classroom')
 
-= form_for classroom do |f|
-  = f.select :student_id, Student.all.map { |s| [s.name, s.id] }
-  = f.select :course_id, Course.all.map { |c| [c.name, c.id] }
-  = f.submit t('save')
+= render 'form'
