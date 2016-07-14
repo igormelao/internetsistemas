@@ -1,6 +1,7 @@
 pt-BR:
   actions: Ações
   add: Adicionar
+  classroom: Matrícula
   enumerations:
     status:
       active: Ativo

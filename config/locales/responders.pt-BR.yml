@@ -2,11 +2,11 @@ pt-BR:
   flash:
     actions:
       create:
-        alert:  "%{resource_name} não pode ser criado."
-        notice: '%{resource_name} foi criado com sucesso.'
+        alert:  "%{resource_name} não pode ser criado(a)."
+        notice: '%{resource_name} foi criado(a) com sucesso.'
       destroy:
-        alert:  "%{resource_name} não pode ser removido."
-        notice: '%{resource_name} foi removido com sucesso.'
+        alert:  "%{resource_name} não pode ser removido(a)."
+        notice: '%{resource_name} foi removido(a) com sucesso.'
       update:
-        alert:  "%{resource_name} não pode ser alterado."
-        notice: '%{resource_name} foi atualizado com sucesso.'
+        alert:  "%{resource_name} não pode ser alterado(a)."
+        notice: '%{resource_name} foi atualizado com sucesso(a).'

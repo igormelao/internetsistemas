@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :students
   resources :courses
-  resources :classrooms, only: [:new, :create, :edit, :update]
+  resources :classrooms, only: [:new, :create]
   resources :home, only: :index
 end
