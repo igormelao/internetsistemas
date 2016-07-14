@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe Course, type: :model do
 
   describe '#associations' do
-    it { is_expected.to have_many(:classrooms).dependent(:destroy) }
+    it do
+      is_expected.to have_many(:classrooms)
+        .inverse_of(:course)
+        .dependent(:destroy)
+    end
   end
 
   describe '#validations' do

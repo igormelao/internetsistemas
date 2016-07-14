@@ -6,7 +6,9 @@ class Course < ActiveRecord::Base
 
   # associations
 
-  has_many :classrooms, dependent: :destroy
+  has_many :classrooms,
+           inverse_of: :course,
+           dependent: :destroy
 
   # validations
 
