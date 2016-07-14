@@ -8,6 +8,8 @@ RSpec.describe Student, type: :model do
       .inverse_of(:student)
       .dependent(:destroy)
     end
+
+    it { is_expected.to have_many(:courses).through(:classrooms) }
   end
 
   describe '#validations' do

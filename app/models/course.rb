@@ -10,6 +10,8 @@ class Course < ActiveRecord::Base
            inverse_of: :course,
            dependent: :destroy
 
+  has_many :students, through: :classrooms
+
   # validations
 
   validates :name, presence: true

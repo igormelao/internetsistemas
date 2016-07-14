@@ -2,16 +2,17 @@ require 'rails_helper'
 
 RSpec.describe CoursesController, type: :controller do
 
-  let(:courses)         { create_list(:course, 2) }
-  let(:course)          { courses.first }
+  let(:courses)          { create_list(:course, 2) }
+  let(:course)           { courses.first }
+  let(:classrooms)       { create_list(:classroom, course: course) }
   let(:permitted_params) { [:name, :description, :status] }
   let(:error_msg)        { 'error message' }
 
   describe '#index' do
+    before { get(:index) }
+
     describe 'template' do
       render_views
-      before { get(:index) }
-
       it { is_expected.to respond_with(:success) }
       it { is_expected.to render_template :index }
     end
@@ -22,28 +23,16 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe '#new' do
+    before { get :new }
+
     describe 'template' do
       render_views
-
-      before { get :new }
-
       it { is_expected.to respond_with(:success) }
       it { is_expected.to render_template :new }
     end
 
-    describe 'helper methods' do
-      describe 'template' do
-        render_views
-
-        before { get :new }
-
-        it { is_expected.to respond_with(:success) }
-        it { is_expected.to render_template :new }
-      end
-
-      describe 'exposes' do
-        it { expect(controller.course).to be_a_new(Course) }
-      end
+    describe 'exposes' do
+      it { expect(controller.course).to be_a_new(Course) }
     end
   end
 
@@ -89,22 +78,31 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
-  describe '#edit' do
+  describe '#show' do
+    before { get :show, id: course }
+
     describe 'template' do
       render_views
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template :show }
+    end
 
-      before { get(:edit, id: course) }
+    describe 'exposes' do
+      it { expect(controller.course).to eq(course) }
+    end
+  end
 
+  describe '#edit' do
+    before { get(:edit, id: course) }
+
+    describe 'template' do
+      render_views
       it { is_expected.to respond_with :success }
       it { is_expected.to render_template :edit }
     end
 
-    describe 'helper methods' do
-      before { get :edit, id: course }
-
-      describe 'exposes' do
-        it { expect(controller.course).to eq(course) }
-      end
+    describe 'exposes' do
+      it { expect(controller.course).to eq(course) }
     end
   end
 

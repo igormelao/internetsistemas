@@ -1,0 +1,12 @@
+- students = course.students
+
+h1
+  = course.name
+
+- if students.present?
+  h2
+    = t('.students')
+
+  - students.each do |student|
+    p
+      = student.name

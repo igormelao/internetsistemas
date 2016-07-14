@@ -6,3 +6,5 @@ pt-BR:
       students: Estudantes
     new:
       new_student: Cadastrar Estudante
+    show:
+      courses: Cursos

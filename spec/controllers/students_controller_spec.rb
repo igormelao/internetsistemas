@@ -8,10 +8,10 @@ RSpec.describe StudentsController, type: :controller do
   let(:error_msg)        { 'error message' }
 
   describe '#index' do
+    before { get(:index) }
+
     describe 'template' do
       render_views
-      before { get(:index) }
-
       it { is_expected.to respond_with(:success) }
       it { is_expected.to render_template :index }
     end
@@ -22,28 +22,16 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   describe '#new' do
+    before { get :new }
+
     describe 'template' do
       render_views
-
-      before { get :new }
-
       it { is_expected.to respond_with(:success) }
       it { is_expected.to render_template :new }
     end
 
-    describe 'helper methods' do
-      describe 'template' do
-        render_views
-
-        before { get :new }
-
-        it { is_expected.to respond_with(:success) }
-        it { is_expected.to render_template :new }
-      end
-
-      describe 'exposes' do
-        it { expect(controller.student).to be_a_new(Student) }
-      end
+    describe 'exposes' do
+      it { expect(controller.student).to be_a_new(Student) }
     end
   end
 
@@ -89,22 +77,31 @@ RSpec.describe StudentsController, type: :controller do
     end
   end
 
-  describe '#edit' do
+  describe '#show' do
+    before { get :show, id: student }
+
     describe 'template' do
       render_views
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template :show }
+    end
 
-      before { get(:edit, id: student) }
+    describe 'exposes' do
+      it { expect(controller.student).to eq(student) }
+    end
+  end
 
+  describe '#edit' do
+    before { get(:edit, id: student) }
+
+    describe 'template' do
+      render_views
       it { is_expected.to respond_with :success }
       it { is_expected.to render_template :edit }
     end
 
-    describe 'helper methods' do
-      before { get :edit, id: student }
-
-      describe 'exposes' do
-        it { expect(controller.student).to eq(student) }
-      end
+    describe 'exposes' do
+      it { expect(controller.student).to eq(student) }
     end
   end
 
