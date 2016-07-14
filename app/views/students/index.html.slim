@@ -1,4 +1,11 @@
-= link_to t('add'), new_student_path, class: 'btn btn-primary pull-right'
+- if flash[:notice]
+  .alert.alert-success = flash[:notice]
+
+- if flash[:alert]
+  .alert.alert-danger = flash[:alert]
+
+.row
+  = link_to t('add'), new_student_path, class: 'btn btn-primary pull-right'
 
 h1
   = t('.students')

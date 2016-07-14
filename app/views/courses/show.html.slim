@@ -1,5 +1,8 @@
 - students = course.students
 
+- if flash[:notice]
+  .alert.alert-success = flash[:notice]
+
 h1
   = course.name
 

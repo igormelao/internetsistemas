@@ -60,18 +60,12 @@ RSpec.describe StudentsController, type: :controller do
       end
 
       context 'invalid' do
-        let(:expected_flash) do
-          I18n.t('flash.actions.create.alert') %
-          { resource_name: invalid_student_params[:name] }
-        end
-
         before do
           allow_any_instance_of(ActiveModel::Errors).to receive(:full_messages)
             .and_return([error_msg])
           post :create, student: invalid_student_params
         end
 
-        it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
         it { expect(response).to render_template :new }
       end
     end
@@ -143,16 +137,11 @@ RSpec.describe StudentsController, type: :controller do
             { resource_name: valid_student.name }
         end
 
-        it { expect(response).to redirect_to action: :index }
+        it { expect(response).to redirect_to action: :show }
         it { expect(controller).to set_flash[:notice].to(expected_flash) }
       end
 
       context 'invalid' do
-        let(:expected_flash) do
-          I18n.t('flash.actions.update.alert') %
-            { resource_name: invalid_student.name }
-        end
-
         before do
           allow_any_instance_of(ActiveModel::Errors).to receive(:full_messages)
             .and_return([error_msg])
@@ -160,7 +149,6 @@ RSpec.describe StudentsController, type: :controller do
         end
 
         it { expect(response).to render_template :edit }
-        it { expect(controller).to set_flash.now[:alert].to(expected_flash) }
       end
     end
   end
@@ -178,11 +166,6 @@ RSpec.describe StudentsController, type: :controller do
     end
 
     context 'on failure' do
-      let(:expected_flash) do
-        I18n.t('flash.actions.destroy.alert') %
-          { resource_name: student.name }
-      end
-
       before do
         allow_any_instance_of(Student).to receive(:destroy).and_return(false)
         allow_any_instance_of(ActiveModel::Errors).to receive(:full_messages)
@@ -191,7 +174,6 @@ RSpec.describe StudentsController, type: :controller do
       end
 
       it { expect(response).to redirect_to action: :index }
-      it { expect(controller).to set_flash[:alert].to(expected_flash) }
     end
   end
 end

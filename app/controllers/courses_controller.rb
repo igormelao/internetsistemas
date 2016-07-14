@@ -22,12 +22,8 @@ class CoursesController < ApplicationController
   end
 
   def create
-    if course.save
-      redirect_to courses_path, notice: flash_for_action_create_with_success
-    else
-      flash.now[:alert] = flash_for_action_create_with_error
-      render :new
-    end
+    flash[:notice] = t('flash.actions.create.notice', resource_name: course.name) if course.save
+    respond_with course, location: -> { courses_path }
   end
 
   def edit
@@ -35,48 +31,21 @@ class CoursesController < ApplicationController
 
   def update
     if course.update(course_params)
-      redirect_to courses_path, notice: flash_for_action_update_with_success
-    else
-      flash.now[:alert] = flash_for_action_update_with_error
-      render :edit
+      flash[:notice] = t('flash.actions.update.notice', resource_name: course.name)
     end
+    respond_with course
   end
 
   def destroy
     if course.destroy
-      redirect_to courses_path, notice: flash_for_action_destroy_with_success
-    else
-      redirect_to courses_path, alert: flash_for_action_destroy_with_error
+      flash[:notice] = t('flash.actions.destroy.notice', resource_name: course.name)
     end
+    respond_with course, location: -> { courses_path }
   end
 
   # private methods
 
   private
-
-  def flash_for_action_create_with_success
-    ( t('flash.actions.create.notice') % { resource_name: course.try(:name) } )
-  end
-
-  def flash_for_action_create_with_error
-    ( t('flash.actions.create.alert') % { resource_name: course.try(:name) } )
-  end
-
-  def flash_for_action_update_with_success
-    ( t('flash.actions.update.notice') % { resource_name: course.try(:name) } )
-  end
-
-  def flash_for_action_update_with_error
-    ( t('flash.actions.update.alert') % { resource_name: course.try(:name) } )
-  end
-
-  def flash_for_action_destroy_with_success
-    ( t('flash.actions.destroy.notice') % { resource_name: course.try(:name) } )
-  end
-
-  def flash_for_action_destroy_with_error
-    ( t('flash.actions.destroy.alert') % { resource_name: course.try(:name) } )
-  end
 
   def course_params
     params.require(:course).permit(PERMITTED_PARAMS)

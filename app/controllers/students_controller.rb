@@ -22,12 +22,8 @@ class StudentsController < ApplicationController
   end
 
   def create
-    if student.save
-      redirect_to students_path, notice: flash_for_action_create_with_success
-    else
-      flash.now[:alert] = flash_for_action_create_with_error
-      render :new
-    end
+    flash[:notice] = t('flash.actions.create.notice', resource_name: student.name) if student.save
+    respond_with student, location: -> { students_path }
   end
 
   def show
@@ -38,48 +34,21 @@ class StudentsController < ApplicationController
 
   def update
     if student.update(student_params)
-      redirect_to students_path, notice: flash_for_action_update_with_success
-    else
-      flash.now[:alert] = flash_for_action_update_with_error
-      render :edit
+      flash[:notice] = t('flash.actions.update.notice', resource_name: student.name)
     end
+    respond_with student
   end
 
   def destroy
     if student.destroy
-      redirect_to students_path, notice: flash_for_action_destroy_with_success
-    else
-      redirect_to students_path, alert: flash_for_action_destroy_with_error
+      flash[:notice] = t('flash.actions.destroy.notice', resource_name: student.name)
     end
+    respond_with student, location: -> { students_path }
   end
 
   # private methods
 
   private
-
-  def flash_for_action_create_with_success
-    ( t('flash.actions.create.notice') % { resource_name: student.try(:name) } )
-  end
-
-  def flash_for_action_create_with_error
-    ( t('flash.actions.create.alert') % { resource_name: student.try(:name) } )
-  end
-
-  def flash_for_action_update_with_success
-    ( t('flash.actions.update.notice') % { resource_name: student.try(:name) } )
-  end
-
-  def flash_for_action_update_with_error
-    ( t('flash.actions.update.alert') % { resource_name: student.try(:name) } )
-  end
-
-  def flash_for_action_destroy_with_success
-    ( t('flash.actions.destroy.notice') % { resource_name: student.try(:name) } )
-  end
-
-  def flash_for_action_destroy_with_error
-    ( t('flash.actions.destroy.alert') % { resource_name: student.try(:name) } )
-  end
 
   def student_params
     params.require(:student).permit(PERMITTED_PARAMS)
